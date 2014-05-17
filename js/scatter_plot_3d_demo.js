@@ -248,8 +248,46 @@ function scatterPlot3d( parent )
     if ( x3d.node() && x3d.node().runtime ) {
       for (var r=0; r<rows.length; ++r) {
         var x = rows[r].x;
+        var y = rows[r].y;
         var z = rows[r].z;
-        rows[r].y = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*z + time));
+
+        var checkx = document.getElementById('myCheckx').checked;
+        var checky = document.getElementById('myChecky').checked;
+        var checkz = document.getElementById('myCheckz').checked;
+
+        if(checkx && checky && checkz)
+        {
+          rows[r].x = 5*( Math.sin(0.5*y + time) * Math.cos(0.25*z + time));
+          rows[r].y = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*z + time));        
+          rows[r].z = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*y + time));            
+        }
+        else if (checkx && checky)
+        {
+          rows[r].x = 5*( Math.sin(0.5*y + time) * Math.cos(0.25*z + time));
+          rows[r].y = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*z + time)); 
+        }
+        else if (checky && checkz)
+        {
+          rows[r].y = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*z + time));        
+          rows[r].z = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*y + time));  
+        }
+        else if (checkx && checkz)
+        {
+          rows[r].x = 5*( Math.sin(0.5*y + time) * Math.cos(0.25*z + time));
+          rows[r].z = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*y + time));          
+        }
+        else if(checkx)
+        {
+          rows[r].x = 5*( Math.sin(0.5*y + time) * Math.cos(0.25*z + time));
+        }
+        else if(checky)
+        {
+          rows[r].y = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*z + time));
+        }
+        else if(checkz)
+        {
+          rows[r].z = 5*( Math.sin(0.5*x + time) * Math.cos(0.25*y + time));
+        }
       }
       plotData( defaultDuration );
     } else {
@@ -260,4 +298,4 @@ function scatterPlot3d( parent )
   initializeDataGrid();
   initializePlot();
   setInterval( updateData, defaultDuration );
-}
+  }
