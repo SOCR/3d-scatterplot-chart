@@ -243,6 +243,8 @@ function scatterPlot3d( parent )
     return rows;
   }
 
+//[ [x: 0, y: 0, z: 0], [x:1, y:2, z:3] ]
+
   function updateData() {
     time += Math.PI/8;
     if ( x3d.node() && x3d.node().runtime ) {
