@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html >
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>SOCR 3D Scatter Plot</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://x3dom.org/x3dom/dist/x3dom-full.js"></script>
+    <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="./js/scatter_plot_3d_demo.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.x3dom.org/download/dev/x3dom.css" />
+</head>
+<body>
+    <div id="divPlot">
+    </div>
+    <form action="index.htm" method="post" name="form">
+    <input name="radio" type="radio" value="radio" onclick="Check(this)" id="x" />
+    perturb in X dimension
+    <input name="radio" type="radio" value="radio" onclick="Check(this)" id="y" />
+    perturb in Y dimension
+    <input name="radio" type="radio" value="radio" onclick="Check(this)" id="z" />
+    perturb in Z dimension
+    <input name="radio" type="radio" value="radio" onclick="Check(this)" id="stop" />
+    stop
+    </form>
+    <script>
+
+        d3.select('html').style('height', '100%').style('width', '100%')
+        d3.select('body').style('height', '100%').style('width', '100%')
+        d3.select('#divPlot').style('width', "500px").style('height', "500px")
+        scatterPlot3d(d3.select('#divPlot'));
+
+        function Check(obj) {
+            top.location.reload();
+        }
+    </script>
+</body>
+</html>
